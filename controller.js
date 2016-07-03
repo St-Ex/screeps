@@ -28,7 +28,7 @@ module.exports = class Controller {
 
     }
 
-    return CREEPS[ this.code ];
+    return CREEPS[ this.role ];
   }
 
   control () {

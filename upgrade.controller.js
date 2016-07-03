@@ -36,6 +36,6 @@ module.exports = class UpgradeController extends Controller {
   }
 
   newCreep () {
-    return [ WORK, WORK, MOVE, CARRY ]
+    return [ WORK, CARRY, MOVE, CARRY ]
   }
 }

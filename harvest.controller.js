@@ -3,7 +3,7 @@ const Controller = require('controller')
 module.exports = class HarvestController extends Controller {
 
   constructor (max) {
-    super('harvest', 3)
+    super('harvest', max)
   }
 
   control () {

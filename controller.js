@@ -2,8 +2,6 @@ const CREEPS_RESET = { recreate: false }
 
 module.exports = class Controller {
 
-  static CREEPS
-
   constructor (role, max) {
     this.maxcreeps = max
     this.role = role

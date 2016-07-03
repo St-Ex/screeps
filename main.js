@@ -1,6 +1,8 @@
 const HarvestController = require('harvest.controller');
+const UpgradeController = require('upgrade.controller');
 
 const HARVEST_CONT = new HarvestController(3);
+const UPGRADE_CONT = new UpgradeController(1);
 
 module.exports.loop = function () {
 
@@ -13,5 +15,6 @@ module.exports.loop = function () {
   
   
   HARVEST_CONT.control();
+  UPGRADE_CONT.control();
 }
 

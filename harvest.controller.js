@@ -1,12 +1,16 @@
-module.exports = class HarvestController {
-    
-    constructor(max) {
-        this.maxcreeps=max;
-    }
-    
-    control(){
+const Controller = require('controller')
 
-        if (Game.creeps.filter())
-        console.log(Game.creeps);
-    }
+module.exports = class HarvestController extends Controller {
+
+  constructor (max) {
+    super('harvest', 3)
+  }
+
+  control () {
+    super.control();
+  }
+
+  newCreep () {
+    return [ WORK, MOVE, CARRY ]
+  }
 }

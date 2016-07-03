@@ -1,3 +1,10 @@
+import HarvestCntroller from 'harvest.controller'
+
+const HARVEST_CONT = new HarvestCntroller(3);
+
 module.exports.loop = function () {
-    console.log('tick');
-}
+
+    HARVEST_CONT.control();
+
+    
+};

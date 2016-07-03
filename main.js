@@ -17,7 +17,7 @@ module.exports.loop = function () {
     }
   }
 
-  HARVEST_CONT.creeps_reset()
+  HarvestController.creeps_reset()
 
   BUILD_CONT.control()
   HARVEST_CONT.control()

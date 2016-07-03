@@ -13,18 +13,17 @@ module.exports = class Controller {
     CREEPS = Object.assign({}, CREEPS_RESET)
   }
 
-  get creeps () {
+  get creepNames () {
     if (!CREEPS.init) {
       CREEPS.init = true;
       console.log(JSON.stringify(CREEPS))
-      for (let creepName in Game.creeps) {
-        let creep = Game.creeps[ creepName ]
-        if (creep.memory.role) {
-          CREEPS[ creep.memory.role ].push(creep)
-        } else {
+      for (let creepName in Game.creep) {
+        let creep = Game.creepNames[ creepName ]
+        if (!creep.memory.role) {
           // Recycle
           creep.memory.role = 'recycle';
         }
+        CREEPS[ creep.memory.role ].push(creepName)
       }
 
     }
@@ -33,13 +32,14 @@ module.exports = class Controller {
   }
 
   control () {
-    if (this.creeps.length < this.maxcreeps) {
+    if (this.creepNames.length < this.maxcreeps) {
       this.spawn();
     }
   }
 
   spawn (spawn, memory) {
-    return (spawn ? spawn : Game.spawns.hq1)
+    let creep = (spawn ? spawn : Game.spawns.hq1)
       .createCreep(this.newCreep(), Object.assign({ role: this.role }, memory));
+    this.creepNames.push(creep.name)
   }
 }

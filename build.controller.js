@@ -23,7 +23,7 @@ module.exports = class BuilderController extends Controller {
     if (this.creepNames.length > 0) {
       this.creepNames.forEach(
         creepName => {
-          let creep = Game.creep[creepName]
+          let creep = Game.creeps[creepName]
           if (creep.memory.building && creep.carry.energy == 0) {
             creep.memory.building = false;
           }

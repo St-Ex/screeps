@@ -39,6 +39,5 @@ module.exports = class Controller {
   spawn (spawn, memory) {
     let creep = (spawn ? spawn : Game.spawns.hq1)
       .createCreep(this.newCreep(), Object.assign({ role: this.role }, memory));
-    this.creepNames.add(creep.name)
   }
 }

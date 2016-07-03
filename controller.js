@@ -8,6 +8,7 @@ module.exports = class Controller {
   get creeps () {
     this._creeps = [];
     for (let creep in Game.creeps) {
+      creep = Game.creeps[ creep ];
       if (creep.memory && creep.memory.role === this.role) {
         this._creeps.push(creep)
       }

@@ -8,6 +8,9 @@ const UPGRADE_CONT = new UpgradeController(1);
 const RECYCLE_CONT = new RecycleController();
 const BUILD_CONT = new BuildController(3);
 
+Memory.CREEPS_RESET = {}
+Memory.CREEPS_SORT = {}
+
 module.exports.loop = function () {
 
   for (var name in Memory.creep) {

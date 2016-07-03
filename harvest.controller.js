@@ -13,6 +13,7 @@ module.exports = class HarvestController extends Controller {
     if (this.creeps.length > 0) {
       this.creeps.forEach(
         creep => {
+          console.log('creep', JSON.stringify(creep))
           if (creep.carry.energy < creep.carryCapacity) {
             this.harvestOrMove(creep)
           }

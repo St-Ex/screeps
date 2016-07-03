@@ -8,12 +8,11 @@ module.exports = class HarvestController extends Controller {
 
   control () {
     super.control();
-    this.sources = creep.room.find(FIND_SOURCES);
+
 
     if (this.creeps.length > 0) {
       this.creeps.forEach(
         creep => {
-          console.log('creep', JSON.stringify(creep))
           if (creep.carry.energy < creep.carryCapacity) {
             this.harvestOrMove(creep)
           }
@@ -36,8 +35,9 @@ module.exports = class HarvestController extends Controller {
   }
 
   harvestOrMove (creep) {
-    if (creep.harvest(this.sources[ 0 ]) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(this.sources[ 0 ]);
+    let sources = creep.room.find(FIND_SOURCES);
+    if (creep.harvest(sources[ 0 ]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[ 0 ]);
     }
   }
 

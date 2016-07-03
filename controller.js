@@ -16,14 +16,12 @@ module.exports = class Controller {
   get creepNames () {
     if (!CREEPS.init) {
       CREEPS.init = true;
-      console.log(JSON.stringify(CREEPS))
       for (let name in Game.creeps) {
         let creep = Game.creeps[ name ]
         if (!creep.memory.role) {
           // Recycle
           creep.memory.role = 'recycle';
         }
-        console.log('Adding', name)
         CREEPS[ creep.memory.role ].add(name)
       }
 

@@ -17,7 +17,7 @@ module.exports = class Controller {
 
   control () {
     if (this.creeps.length < this.maxcreeps) {
-      Game.spawns.hq1.createCreep(this.newCreep());
+      Game.spawns.hq1.createCreep(this.newCreep(), { role: this.role });
     }
   }
 }

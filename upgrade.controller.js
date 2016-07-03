@@ -13,6 +13,7 @@ module.exports = class UpgradeController extends Controller {
       this.creepNames.forEach(
         creepName => {
           let creep = Game.creeps[creepName]
+          if (!creep) return
           if (creep.memory.upgrading && creep.carry.energy == 0) {
             creep.memory.upgrading = false;
           }

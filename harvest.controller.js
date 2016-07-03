@@ -14,6 +14,7 @@ module.exports = class HarvestController extends Controller {
       this.creepNames.forEach(
         creepName => {
           let creep = Game.creeps[creepName]
+          if (!creep) return
           if (creep.carry.energy < creep.carryCapacity) {
             this.harvestOrMove(creep)
           }

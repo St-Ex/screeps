@@ -26,7 +26,7 @@ module.exports = class UpgradeController extends Controller {
           }
           else {
             var sources = creep.room.find(FIND_MY_SPAWNS);
-            if (creep.harvest(sources[ 0 ]) == ERR_NOT_IN_RANGE) {
+            if (sources[ 0 ].transfer(creep,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(sources[ 0 ]);
             }
           }

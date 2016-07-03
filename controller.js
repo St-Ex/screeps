@@ -6,7 +6,7 @@ module.exports = class Controller {
   constructor (role, max) {
     this.maxcreeps = max
     this.role = role
-    CREEPS_RESET[ this.role ] = [];
+    CREEPS_RESET[ this.role ] = new Set();
   }
 
   static creeps_reset () {

@@ -24,7 +24,7 @@ module.exports = class Controller {
           creep.memory.role = 'recycle';
         }
         console.log('Adding', name)
-        CREEPS[ creep.memory.role ].push(name)
+        CREEPS[ creep.memory.role ].add(name)
       }
 
     }
@@ -41,6 +41,6 @@ module.exports = class Controller {
   spawn (spawn, memory) {
     let creep = (spawn ? spawn : Game.spawns.hq1)
       .createCreep(this.newCreep(), Object.assign({ role: this.role }, memory));
-    this.creepNames.push(creep.name)
+    this.creepNames.add(creep.name)
   }
 }

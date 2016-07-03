@@ -10,7 +10,8 @@ module.exports = class Controller {
     CREEPS_RESET[ this.role ] = [];
   }
   
-  creeps_reset () {
+  static creeps_reset () {
+    console.log(JSON.stringify(CREEPS_RESET))
     CREEPS = Object.assign({}, CREEPS_RESET)
   }
 
@@ -29,6 +30,7 @@ module.exports = class Controller {
       }
 
     }
+
     return CREEPS[ this.code ];
   }
 

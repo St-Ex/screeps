@@ -1,26 +1,27 @@
-const CREEPS_RESET = { recreate: false }
+const CREEPS_RESET = {}
+var CREEPS = {};
 
 module.exports = class Controller {
 
-  static creeps_reset () {
-    Controller.CREEPS = Object.assign({}, CREEPS_RESET)
-  }
 
   constructor (role, max) {
     this.maxcreeps = max
     this.role = role
     CREEPS_RESET[ this.role ] = [];
-    if (!Controller.CREEPS) Controller.creeps_reset()
+  }
+  
+  creeps_reset () {
+    CREEPS = Object.assign({}, CREEPS_RESET)
   }
 
   get creeps () {
-    if (Controller.CREEPS.recreate) {
-      Controller.creeps_reset()
+    if (!CREEPS.init) {
+      CREEPS.init = true;
 
       for (let creepName in Game.creeps) {
         let creep = Game.creeps[ creepName ]
         if (creep.memory.role) {
-          Controller.CREEPS[ creep.memory.role ].push(creep)
+          CREEPS[ creep.memory.role ].push(creep)
         } else {
           // Recycle
           creep.memory.role = 'recycle';
@@ -28,7 +29,7 @@ module.exports = class Controller {
       }
 
     }
-    return Controller.CREEPS[ this.code ];
+    return CREEPS[ this.code ];
   }
 
   control () {

@@ -17,11 +17,11 @@ module.exports.loop = function () {
     }
   }
 
-  HARVEST_CONT.CREEPS.recreate = true;
+  HARVEST_CONT.creeps_reset()
 
-  BUILD_CONT.control();
-  HARVEST_CONT.control();
-  UPGRADE_CONT.control();
-  RECYCLE_CONT.control();
+  BUILD_CONT.control()
+  HARVEST_CONT.control()
+  UPGRADE_CONT.control()
+  RECYCLE_CONT.control()
 }
 

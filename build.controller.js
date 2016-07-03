@@ -13,14 +13,14 @@ module.exports = class BuilderController extends Controller {
       let sites = room.find(FIND_CONSTRUCTION_SITES)
 
       if (sites) {
-        if (sites.length < this.creepNames.length
-          && this.creepNames.length < this.maxcreeps) {
+        if (sites.length < this.creepNames.size
+          && this.creepNames.size < this.maxcreeps) {
           this.spawn(room.find(FIND_MY_SPAWNS)[ 0 ])
         }
       }
     }
 
-    if (this.creepNames.length > 0) {
+    if (this.creepNames.size > 0) {
       this.creepNames.forEach(
         creepName => {
           let creep = Game.creeps[creepName]

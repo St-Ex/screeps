@@ -10,7 +10,7 @@ module.exports = class HarvestController extends Controller {
     super.control();
 
 
-    if (this.creepNames.length > 0) {
+    if (this.creepNames.size > 0) {
       this.creepNames.forEach(
         creepName => {
           let creep = Game.creeps[creepName]

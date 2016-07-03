@@ -3,22 +3,20 @@ var CREEPS = {};
 
 module.exports = class Controller {
 
-
   constructor (role, max) {
     this.maxcreeps = max
     this.role = role
     CREEPS_RESET[ this.role ] = [];
   }
-  
+
   static creeps_reset () {
-    console.log(JSON.stringify(CREEPS_RESET))
     CREEPS = Object.assign({}, CREEPS_RESET)
   }
 
   get creeps () {
     if (!CREEPS.init) {
       CREEPS.init = true;
-
+      console.log(JSON.stringify(CREEPS))
       for (let creepName in Game.creeps) {
         let creep = Game.creeps[ creepName ]
         if (creep.memory.role) {

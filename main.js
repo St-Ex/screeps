@@ -1,6 +1,6 @@
-const HarvestCntroller = require('harvest.controller');
+const HarvestController = require('harvest.controller');
 
-const HARVEST_CONT = new HarvestCntroller(3);
+const HARVEST_CONT = new HarvestController(3);
 
 module.exports.loop = function () {
 

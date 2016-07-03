@@ -1,4 +1,4 @@
-class HarvestController {
+module.exports = class HarvestController {
     
     constructor(max) {
         this.maxcreeps=max;
@@ -8,5 +8,3 @@ class HarvestController {
         console.log(Game.creeps);
     }
 }
-
-module.exports.HarvestController = HarvestController;

@@ -1,4 +1,4 @@
-export default class HarvestController {
+class HarvestController {
     
     constructor(max) {
         this.maxcreeps=max;
@@ -8,3 +8,5 @@ export default class HarvestController {
         console.log(Game.creeps);
     }
 }
+
+module.exports.HarvestController = HarvestController;

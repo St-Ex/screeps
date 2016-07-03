@@ -1,4 +1,4 @@
-import HarvestCntroller from 'harvest.controller'
+const HarvestCntroller = require('harvest.controller');
 
 const HARVEST_CONT = new HarvestCntroller(3);
 

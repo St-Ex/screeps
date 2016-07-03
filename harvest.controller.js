@@ -5,6 +5,8 @@ module.exports = class HarvestController {
     }
     
     control(){
+
+        if (Game.creeps.filter())
         console.log(Game.creeps);
     }
 }

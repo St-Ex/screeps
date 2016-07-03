@@ -1,0 +1,10 @@
+{
+  "name": "screeps-stex",
+  "version": "1.0.0",
+  "author": "St-EX",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-screeps": "^1.0.2"
+  }
+}

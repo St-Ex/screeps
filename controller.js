@@ -1,17 +1,18 @@
+const CREEPS_RESET = { recreate: false }
+
 module.exports = class Controller {
 
-  static CREEPS_RESET = { recreate: false };
   static CREEPS
 
   constructor (role, max) {
     this.maxcreeps = max
     this.role = role
-    Controller.CREEPS_RESET[ this.role ] = [];
+    CREEPS_RESET[ this.role ] = [];
   }
 
   get creeps () {
     if (Controller.CREEPS.recreate) {
-      Controller.CREEPS = Object.assign({}, Controller.CREEPS_RESET)
+      Controller.CREEPS = Object.assign({}, CREEPS_RESET)
 
       for (let creepName in Game.creeps) {
         let creep = Game.creeps[ creepName ]

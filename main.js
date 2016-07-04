@@ -5,6 +5,7 @@ const Up = require('upgrade.controller')
 const R = require('recycle.controller')
 const Disp = require('dispatch.controller')
 const Bld = require('build.controller')
+const CreepManager = require('creep.manager')
 
 function checkMinimal () {
   let missing = false;
@@ -38,7 +39,7 @@ module.exports.loop = function () {
   }
 
   Controller.startOfLoop()
-  
+
   // Minimal check
   let missing = checkMinimal();
   if (missing) {

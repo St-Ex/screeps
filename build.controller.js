@@ -50,9 +50,11 @@ class BuildController extends Controller {
           }
 
           creep.memory.target = target.id
+
+          let result
           // Build or repare target
           if (creep.memory.repair) {
-            let result = creep.repair(target)
+            result = creep.repair(target)
           }
           else {
             result = creep.build(target)

@@ -5,7 +5,7 @@ class CreepManager {
 	}
 
 	reset(init) {
-			
+
 		this.creeps = Object.assign({}, init)
 
 		for (let name in Game.creeps) {
@@ -37,4 +37,4 @@ class CreepManager {
 	}
 }
 
-module.exports.CreepManager = new CreepManager();
+module.exports = new CreepManager();

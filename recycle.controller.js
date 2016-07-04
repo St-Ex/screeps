@@ -1,6 +1,6 @@
 const Controller = require('controller')
 
-module.exports = class RecycleController extends Controller {
+class RecycleController extends Controller {
 
 	constructor() {
 		super('recycle', 0)

@@ -26,7 +26,7 @@ const growSequence = [
   { cont: Up, req: 2 },
 ]
 
-function findNextToSpawn () {
+function grow () {
   let g = growSequence.find(g=>g.cont.creepIds < g.req)
   if (g) {
     g.cont.spawn()
@@ -52,9 +52,7 @@ module.exports.loop = function () {
       Object.assign({ role: missing.role, en: missing.needEnergy })
     )
   } else {
-    // Let's grow stronger
-    let grow = findNextToSpawn()
-    grow.spawn()
+   grow()
   }
 
   Coll.control()

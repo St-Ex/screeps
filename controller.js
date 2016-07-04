@@ -31,7 +31,7 @@ module.exports = class Controller {
   }
 
   control () {
-    if (this.creepNames.length < this.maxcreeps) {
+    if (this.creepNames.size < this.maxcreeps) {
       this.spawn();
     }
   }

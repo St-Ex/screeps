@@ -8,8 +8,7 @@ module.exports = class HarvestController extends Controller {
 
   control () {
     super.control();
-
-
+    
     if (this.creepNames.size > 0) {
       this.creepNames.forEach(
         creepName => {

@@ -41,7 +41,6 @@ class CollectController extends Controller {
 							}
 						}
 					)
-
 					targets.sort(
 						(t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(
 							t1.structureType

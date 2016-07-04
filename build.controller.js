@@ -67,7 +67,7 @@ class BuildController extends Controller {
 	}
 
 	newCreep() {
-		return [WORK, CARRY, MOVE, WORK, MOVE, MOVE, MOVE, MOVE, MOVE]
+		return [WORK, CARRY, MOVE, WORK, CARRY, CARRY, WORK]
 	}
 
 }

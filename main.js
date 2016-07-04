@@ -10,7 +10,7 @@ const BUILD_CONT = new BuildController(3);
 
 module.exports.loop = function () {
 
-  for (var name in Memory.creep) {
+  for (var name in Memory.creeps) {
     if (!Game.creeps[ name ]) {
       delete Memory.creeps[ name ]
     }

@@ -15,7 +15,7 @@ class BuildController extends Controller {
 				creep.memory.build = (creep.memory.build && creep.carry.energy !== 0
 				|| !creep.memory.build && creep.carry.energy === creep.carryCapacity)
 
-				if (!creep.memory.building) {
+				if (!creep.memory.build) {
 					this.goGetEnergy(creep)
 				}
 				else {

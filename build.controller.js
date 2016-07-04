@@ -35,7 +35,7 @@ module.exports = class BuilderController extends Controller {
           if (creep.memory.building) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             targets.sort(
-              (t1,t2) => PRIOS.getPriority(t1.structureType)-PRIOS.getPriority(t2.structureType)
+              (t1,t2) => PRIOS.getPriority(t2.structureType)-PRIOS.getPriority(t1.structureType)
             )
             if (targets.length) {
               if (creep.build(targets[ 0 ]) == ERR_NOT_IN_RANGE) {

@@ -27,7 +27,10 @@ const growSequence = [
 ]
 
 function findNextToSpawn () {
-  growSequence.find(g=>g.cont.creepIds < g.req).spawn()
+  let g = growSequence.find(g=>g.cont.creepIds < g.req)
+  if (g) {
+    g.cont.spawn()
+  }
 }
 
 module.exports.loop = function () {
@@ -53,7 +56,6 @@ module.exports.loop = function () {
     let grow = findNextToSpawn()
     grow.spawn()
   }
-
 
   Coll.control()
   Harv.control()

@@ -68,20 +68,20 @@ module.exports = class Controller {
       }
     }
     else {
-      let targets = creep.room.find(FIND_DROPPED_ENERGY, {
+      sources = creep.room.find(FIND_DROPPED_ENERGY, {
         filter: (d=>d.amount >= TRIGGER_PICK)
       })
-      if (targets) {
+      if (sources.length) {
         if (creep.pickup(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
           creep.moveTo(targets[ 0 ]);
         }
       }
       else {
-        targets = this.creeps('harvest')
+        sources = this.creeps('harvest')
           .map(c => Game.getObjectById(c))
           .sort((c1, c2) => c2.carry - c1.carry)
-        if (targets[ 0 ].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(targets[ 0 ]);
+        if (sources[ 0 ].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[ 0 ]);
         }
       }
     }

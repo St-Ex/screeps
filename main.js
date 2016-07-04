@@ -18,9 +18,9 @@ module.exports.loop = function () {
 
   HarvestController.creeps_reset()
 
+  UPGRADE_CONT.control()
   HARVEST_CONT.control()
   BUILD_CONT.control()
-  UPGRADE_CONT.control()
   RECYCLE_CONT.control()
 }
 

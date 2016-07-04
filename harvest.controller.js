@@ -8,7 +8,7 @@ module.exports = class HarvestController extends Controller {
 
   control () {
     super.control();
-    
+
     if (this.creepNames.size > 0) {
       this.creepNames.forEach(
         creepName => {
@@ -20,7 +20,10 @@ module.exports = class HarvestController extends Controller {
           else {
             var targets = creep.room.find(FIND_STRUCTURES, {
               filter: (structure) => {
-                return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+                return (structure.structureType == STRUCTURE_EXTENSION
+                  || structure.structureType == STRUCTURE_SPAWN
+                  || structure.structureType === STRUCTURE_STORAGE
+                  || structure.structureType === STRUCTURE_CONTAINER ) &&
                   structure.energy < structure.energyCapacity;
               }
             });

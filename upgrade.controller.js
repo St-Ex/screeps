@@ -27,10 +27,7 @@ module.exports = class UpgradeController extends Controller {
             }
           }
           else {
-            var sources = creep.room.find(FIND_MY_SPAWNS);
-            if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(sources[ 0 ]);
-            }
+            this.goGetEnergy(creep)
           }
         }
       )

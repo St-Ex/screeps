@@ -40,4 +40,16 @@ module.exports = class Controller {
     let creep = (spawn ? spawn : Game.spawns.hq1)
       .createCreep(this.newCreep(), Object.assign({ role: this.role }, memory));
   }
+
+  goGetEnergy(creep){
+    var sources = creep.room.find(FIND_MY_STRUCTURES,{
+      filter: (structure) => {
+        return (structure.structureType===STRUCTURE_CONTAINER || structure.structureType===STRUCTURE_STORAGE)
+          && structure.energy > structure.energyCapacity;
+      }
+    });
+    if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[ 0 ]);
+    }
+  }
 }

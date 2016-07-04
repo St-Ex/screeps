@@ -1,4 +1,4 @@
-const Controller = require('controllers/controller')
+const Controller = require('controller')
 
 module.exports.loop = function () {
 

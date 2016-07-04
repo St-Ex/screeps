@@ -4,7 +4,7 @@ const RecycleController = require('recycle.controller')
 const BuildController = require('build.controller')
 const CollectController = require('collect.controller')
 
-const CreepManager = require('../managers/creep.manager')
+const CreepManager = require('creep.manager')
 
 const CREEPS_RESET = {}
 

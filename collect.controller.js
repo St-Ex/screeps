@@ -1,5 +1,5 @@
 const Controller = require('controller')
-const PRIOS = require('../managers/priority')
+const PRIOS = require('priority')
 
 class CollectController extends Controller {
 

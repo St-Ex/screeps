@@ -90,12 +90,3 @@ class Controller {
 }
 
 module.exports.Controller = Controller
-module.exports.init = () => {
-	Controller.startOfLoop()
-
-	HarvestController.control()
-	CollectController.control()
-	UpgradeController.control()
-	BuildController.control()
-	RecycleController.control()
-}

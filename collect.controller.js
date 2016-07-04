@@ -20,8 +20,8 @@ class CollectController extends Controller {
 						}
 					}
 					else {
-						targets = this.creeps('harvest').sort((c1,c2) => c2.carry-c1.carry)
-						if (targets[0].transfer(creep,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+						targets = this.creeps('harvest').sort((c1, c2) => c2.carry - c1.carry)
+						if (targets[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0]);
 						}
 					}
@@ -54,6 +54,10 @@ class CollectController extends Controller {
 				}
 			}
 		)
+	}
+
+	newCreep() {
+		return [MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY]
 	}
 }
 

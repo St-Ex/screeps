@@ -16,7 +16,7 @@ class CreepManager {
 					// Recycle
 					creep.memory.role = 'recycle';
 				}
-				this._creeps[creep.memory.role].add(creep.id)
+				this.creeps[creep.memory.role].add(creep.id)
 			}
 		}
 	}

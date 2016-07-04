@@ -50,8 +50,10 @@ module.exports = class Controller {
           && structure.energy > 0;
       }
     });
-    if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(sources[ 0 ]);
+    if (sources.length >0 ){
+      if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(sources[ 0 ]);
+      }
     }
   }
 }

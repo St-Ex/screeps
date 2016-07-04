@@ -61,4 +61,4 @@ class CollectController extends Controller {
 	}
 }
 
-module.exports = new CollectController(4)
+module.exports = new CollectController(6)

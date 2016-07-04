@@ -15,8 +15,8 @@ module.exports.loop = function () {
 
   Controller.startOfLoop()
 
-  HarvestController.control()
   CollectController.control()
+  HarvestController.control()
   UpgradeController.control()
   BuildController.control()
   RecycleController.control()

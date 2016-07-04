@@ -1,14 +1,14 @@
 const trigger_energy = 0.60
 
 const PART_COST = {
-  MOVE: 50,
-  WORK: 100,
-  CARRY: 50,
-  ATTACK: 80,
-  RANGED_ATTACK: 150,
-  HEAL: 250,
-  CLAIM: 600,
-  TOUGH: 10
+  [MOVE]: 50,
+  [WORK]: 100,
+  [CARRY]: 50,
+  [ATTACK]: 80,
+  [RANGED_ATTACK]: 150,
+  [HEAL]: 250,
+  [CLAIM]: 600,
+  [TOUGH]: 10
 }
 
 class CreepManager {
@@ -47,9 +47,9 @@ class CreepManager {
 
   spawn (spawner, parts, memory) {
     let max = spawner.room.energyCapacityAvailable
-    let selectParts= parts.filter(p=>{
-      max-=PART_COST[p]
-      return max >=0
+    let selectParts = parts.filter(p=> {
+      max -= PART_COST[ p ]
+      return max >= 0
     })
 
     if (!spawner.spawning && spawner.canCreateCreep(selectParts) === 0) {

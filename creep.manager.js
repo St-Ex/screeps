@@ -22,7 +22,7 @@ class CreepManager {
 	}
 
 	spawn(spawner, parts, memory) {
-		if (!spawner.spawning && spawner.canCreateCreep(parts)) {
+		if (!spawner.spawning && spawner.canCreateCreep(parts)===0) {
 			spawner.createCreep(parts, null, memory)
 		}
 	}

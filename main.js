@@ -27,7 +27,7 @@ const growSequence = [
 ]
 
 function grow () {
-  let g = growSequence.find(g=>g.cont.creepIds < g.req)
+  let g = growSequence.find(g=> g.cont.creepIds.length < g.req)
   if (g) {
     g.cont.spawn()
   }

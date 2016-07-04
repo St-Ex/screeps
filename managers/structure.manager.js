@@ -1,0 +1,2 @@
+const NEED_ENERGY = [];
+

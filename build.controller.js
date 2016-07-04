@@ -12,8 +12,10 @@ class BuildController extends Controller {
 
 		this.doForEachCreep(
 			creep => {
-				creep.memory.build = (creep.memory.build && creep.carry.energy !== 0
-				|| !creep.memory.build && creep.carry.energy === creep.carryCapacity)
+				creep.memory.build = (
+				creep.memory.build && creep.carry.energy !== 0
+				|| !creep.memory.build && creep.carry.energy === creep.carryCapacity
+				)
 
 				if (!creep.memory.build) {
 					this.goGetEnergy(creep)
@@ -47,11 +49,15 @@ class BuildController extends Controller {
 
 					creep.memory.target = target.id
 					// Build or repare target
-					let method = (
-						typeof target === 'ConstructionSite' ? creep.build : creep.repare
-					)
-					if (method(target) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(targets[0]);
+					if (typeof target === 'ConstructionSite') {
+						if (creep.build(target) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(targets[0]);
+						}
+					}
+					else {
+						if (creep.repare(target) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(targets[0]);
+						}
 					}
 				}
 			}

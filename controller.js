@@ -58,7 +58,7 @@ module.exports = class Controller {
 	}
 
 	goGetEnergy(creep) {
-		var sources = creep.room.find(
+		let sources = creep.room.find(
 			FIND_MY_STRUCTURES, {
 				filter: (structure) => {
 					return (
@@ -69,15 +69,23 @@ module.exports = class Controller {
 				}
 			}
 		);
-		if (sources.length > 0) {
+		if (sources.length) {
 			if (sources[0].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[0]);
 			}
 		}
-		else if (creep.body.find(p => p.type === WORK)) {
-			let sources = creep.room.find(FIND_SOURCES);
-			if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[0]);
+		else {
+			let targets = creep.room.find(FIND_DROPPED_ENERGY)
+			if (targets) {
+				if (creep.pickup(targets[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(targets[0]);
+				}
+			}
+			else {
+				targets = this.creeps('harvest').sort((c1, c2) => c2.carry - c1.carry)
+				if (targets[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(targets[0]);
+				}
 			}
 		}
 	}

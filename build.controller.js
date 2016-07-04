@@ -21,6 +21,7 @@ class BuildController extends Controller {
           this.goGetEnergy(creep)
         }
         else {
+          let target
           if (creep.memory.target) {
             target = Game.getObjectById(creep.memory.target)
 

@@ -15,22 +15,15 @@ class CollectController extends Controller {
     this.doForEachCreep(
       creep => {
         if (creep.carry.energy == 0) {
-          let targets = creep.room.find(FIND_DROPPED_ENERGY, {
-              filter: (d=>d.amount >= TRIGGER_PICK)
-            }
-          )
+          let targets = this.creeps('harvest')
+            .map(c => Game.getObjectById(c))
+            .sort((c1, c2) => c2.carry - c1.carry)
           if (targets.length) {
-            if (creep.pickup(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(targets[ 0 ]);
-            }
-          }
-          else {
-            targets = this.creeps('harvest')
-              .map(c => Game.getObjectById(c))
-              .sort((c1, c2) => c2.carry - c1.carry)
             if (targets[ 0 ].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(targets[ 0 ]);
             }
+          }else{
+            this.goGetEnergy(creep)
           }
         }
         else {

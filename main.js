@@ -3,6 +3,7 @@ const HarvestController = require('harvest.controller')
 const CollectController = require('collect.controller')
 const UpgradeController = require('upgrade.controller')
 const RecycleController = require('recycle.controller')
+const DispatcherController = require('dispatcher.controller')
 const BuildController = require('build.controller')
 
 module.exports.loop = function () {
@@ -17,6 +18,7 @@ module.exports.loop = function () {
 
   CollectController.control()
   HarvestController.control()
+  DispatcherController.control()
   UpgradeController.control()
   BuildController.control()
   RecycleController.control()

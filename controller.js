@@ -86,7 +86,9 @@ module.exports = class Controller {
         }
       }
       else {
-        targets = this.creeps('harvest').sort((c1, c2) => c2.carry - c1.carry)
+        targets = this.creeps('harvest')
+          .map(c => Game.getObjectById(c))
+          .sort((c1, c2) => c2.carry - c1.carry)
         if (targets[ 0 ].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(targets[ 0 ]);
         }

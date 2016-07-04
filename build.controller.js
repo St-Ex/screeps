@@ -3,72 +3,73 @@ const PRIOS = require('priority.manager')
 
 class BuildController extends Controller {
 
-	constructor(max) {
-		super('build', max,0,true)
-	}
+  constructor (max) {
+    super('build', max, 0, true)
+  }
 
-	control() {
-		super.control();
+  control () {
+    super.control();
 
-		this.doForEachCreep(
-			creep => {
-				creep.memory.build = (
-					creep.memory.build && creep.carry.energy !== 0
-					|| !creep.memory.build && creep.carry.energy === creep.carryCapacity
-				)
+    this.doForEachCreep(
+      creep => {
+        creep.memory.build = (
+          creep.memory.build && creep.carry.energy !== 0
+          || !creep.memory.build && creep.carry.energy === creep.carryCapacity
+        )
 
-				if (!creep.memory.build) {
-					this.goGetEnergy(creep)
-				}
-				else {
-					let target = false
-					if (creep.memory.target) {
-						target = Game.getObjectById(creep.memory.target)
+        if (!creep.memory.build) {
+          this.goGetEnergy(creep)
+        }
+        else {
+          if (creep.memory.target) {
+            target = Game.getObjectById(creep.memory.target)
 
-						if (target && target.hits === target.hitsMax) {
-							target = false;
-						}
-					}
+            if (target && target.hits === target.hitsMax) {
+              target = false;
+            }
+          }
 
-					if (!target) {
-						let targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-						creep.memory.repair = false
-						if (!targets.length) {
-							targets = creep.room.find(
-								FIND_MY_STRUCTURES, {filter: structure => structure.hits < structure.hitsMax}
-							)
-							creep.memory.repair = true
-						}
+          if (!target) {
+            let targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            creep.memory.repair = false
+            if (!targets.length) {
+              targets = creep.room.find(
+                FIND_MY_STRUCTURES, { filter: structure => structure.hits < structure.hitsMax }
+              )
+              creep.memory.repair = true
+            }
 
-						targets.sort(
-							(t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(
-								t1.structureType
-							)
-						)
+            targets.sort(
+              (t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(
+                t1.structureType
+              )
+            )
 
-						target = targets[0]
-					}
+            target = targets[ 0 ]
+          }
 
-					creep.memory.target = target.id
-					// Build or repare target
-					if (creep.memory.repair) {
-						if (creep.repair(target) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(target);
-						}
-					}
-					else {
-						if (creep.build(target) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(target);
-						}
-					}
-				}
-			}
-		)
-	}
+          creep.memory.target = target.id
+          // Build or repare target
+          if (creep.memory.repair) {
+            let result = creep.repair(target)
+          }
+          else {
+            result = creep.build(target)
+          }
 
-	newCreep() {
-		return [WORK, CARRY, MOVE, WORK, CARRY, CARRY, WORK]
-	}
+          if (result === ERR_NOT_IN_RANGE) {
+            creep.moveTo(target);
+          } else if (result == ERR_INVALID_TARGET) {
+            delete creep.memory.target
+          }
+        }
+      }
+    )
+  }
+
+  newCreep () {
+    return [ WORK, CARRY, MOVE, WORK, CARRY, CARRY, WORK ]
+  }
 
 }
 

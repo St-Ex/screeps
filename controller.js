@@ -10,7 +10,7 @@ module.exports = class Controller {
     this.mincreeps = min
     this.role = role
     this.needEnergy = needEnergy
-    CREEPS_RESET[ this.role ] = new Set();
+    CREEPS_RESET[ this.role ] = [];
   }
 
   static startOfLoop () {
@@ -30,14 +30,14 @@ module.exports = class Controller {
   }
 
   control () {
-    if (this.creepIds.size < this.mincreeps) {
+    if (this.creepIds.length < this.mincreeps) {
       CreepManager.spawnAsap(
         Game.spawns.hq1,
         this.newCreep(),
         Object.assign({ role: this.role, en: this.needEnergy })
       )
     }
-    else if (this.creepIds.size < this.maxcreeps) {
+    else if (this.creepIds.length < this.maxcreeps) {
       this.spawn();
     }
   }

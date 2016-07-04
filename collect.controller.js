@@ -19,7 +19,7 @@ class CollectController extends Controller {
               filter: (d=>d.amount >= TRIGGER_PICK)
             }
           )
-          if (targets) {
+          if (targets.length) {
             if (creep.pickup(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
               creep.moveTo(targets[ 0 ]);
             }
@@ -53,9 +53,10 @@ class CollectController extends Controller {
               t1.structureType
             )
           )
-
-          if (creep.transfer(targets[ 0 ], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(targets[ 0 ]);
+          if (targets.size) {
+            if (creep.transfer(targets[ 0 ], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(targets[ 0 ]);
+            }
           }
         }
       }

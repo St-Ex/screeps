@@ -1,8 +1,6 @@
 const Controller = require('controller')
 const CreepManager = require('creep.manager')
 
-const limit = 0.60
-
 class DispatchController extends Controller {
 
 	constructor() {

@@ -35,9 +35,7 @@ class CreepManager {
 
         if (creep.carry.RESOURCE_ENERGY) {
           let p = creep.carry.RESOURCE_ENERGY / creep.carryCapacity
-          if (p < trigger_energy) {
-            this.en_creeps.push[ { id: creep.id, p: p } ];
-          }
+          this.en_creeps.push[ { id: creep.id, p: p } ];
         }
       }
     }

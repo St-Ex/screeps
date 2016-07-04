@@ -1,7 +1,7 @@
 const Controller = require('controller')
 const PRIOS = require('priority.manager')
 
-class BuilderController extends Controller {
+class BuildController extends Controller {
 
 	constructor(max) {
 		super('build', max)

@@ -2,7 +2,7 @@ const CreepManager = require('creep.manager')
 
 const CREEPS_RESET = {}
 
-class Controller {
+module.exports = class Controller {
 
 	constructor(role, max, min) {
 		this.maxcreeps = max
@@ -82,5 +82,3 @@ class Controller {
 		}
 	}
 }
-
-module.exports.Controller = Controller

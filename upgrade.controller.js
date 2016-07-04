@@ -3,7 +3,7 @@ const Controller = require('controller')
 class UpgradeController extends Controller {
 
   constructor (max) {
-    super('upgrade', max)
+    super('upgrade', max, 0, true)
   }
 
   control () {

@@ -4,10 +4,11 @@ const CREEPS_RESET = {}
 
 module.exports = class Controller {
 
-	constructor(role, max, min) {
+	constructor(role, max, min, needEnergy) {
 		this.maxcreeps = max
 		this.mincreeps = min
 		this.role = role
+		this.needEnergy = needEnergy
 		CREEPS_RESET[this.role] = new Set();
 	}
 
@@ -32,7 +33,7 @@ module.exports = class Controller {
 			CreepManager.spawnAsap(
 				Game.spawns.hq1,
 				this.newCreep(),
-				Object.assign({role: this.role})
+				Object.assign({role: this.role, en : this.needEnergy})
 			)
 		}
 		else if (this.creepIds.size < this.maxcreeps) {
@@ -53,7 +54,7 @@ module.exports = class Controller {
 		CreepManager.spawn(
 			spawn ? spawn : Game.spawns.hq1,
 			this.newCreep(),
-			Object.assign({role: this.role}, memory)
+			Object.assign({role: this.role, en : this.needEnergy}, memory)
 		)
 	}
 

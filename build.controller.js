@@ -4,7 +4,7 @@ const PRIOS = require('priority.manager')
 class BuildController extends Controller {
 
 	constructor(max) {
-		super('build', max)
+		super('build', max,0,true)
 	}
 
 	control() {

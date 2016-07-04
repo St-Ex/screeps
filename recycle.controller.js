@@ -3,7 +3,7 @@ const Controller = require('controller')
 class RecycleController extends Controller {
 
 	constructor() {
-		super('recycle', 0)
+		super('recycle')
 	}
 
 	control() {

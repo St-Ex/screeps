@@ -30,16 +30,7 @@ module.exports = class Controller {
   }
 
   control () {
-    if (this.creepIds.length < this.mincreeps) {
-      CreepManager.spawnAsap(
-        Game.spawns.hq1,
-        this.newCreep(),
-        Object.assign({ role: this.role, en: this.needEnergy })
-      )
-    }
-    else if (this.creepIds.length < this.maxcreeps) {
-      this.spawn();
-    }
+    
   }
 
   doForEachCreep (cb) {

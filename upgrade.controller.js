@@ -2,8 +2,8 @@ const Controller = require('controller')
 
 class UpgradeController extends Controller {
 
-  constructor (max) {
-    super('upgrade', max, 0, true)
+  constructor () {
+    super('upgrade', true)
   }
 
   control () {
@@ -35,4 +35,4 @@ class UpgradeController extends Controller {
   }
 }
 
-module.exports = new UpgradeController(1)
+module.exports = new UpgradeController()

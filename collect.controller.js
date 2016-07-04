@@ -5,8 +5,8 @@ const TRIGGER_PICK = 50
 
 class CollectController extends Controller {
 
-  constructor (max) {
-    super('collect', max, 3, false)
+  constructor () {
+    super('collect')
   }
 
   control () {
@@ -68,4 +68,4 @@ class CollectController extends Controller {
   }
 }
 
-module.exports = new CollectController(6)
+module.exports = new CollectController()

@@ -2,8 +2,8 @@ const Controller = require('controller')
 
 class HarvestController extends Controller {
 
-	constructor(max) {
-		super('harvest', max, 1, false)
+	constructor() {
+		super('harvest')
 	}
 
 	control() {
@@ -32,4 +32,4 @@ class HarvestController extends Controller {
 	}
 }
 
-module.exports = new HarvestController(3);
+module.exports = new HarvestController();

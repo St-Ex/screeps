@@ -5,8 +5,8 @@ const limit = 0.60
 
 class DispatchController extends Controller {
 
-	constructor(max) {
-		super('dispatch', max, 1, false)
+	constructor() {
+		super('dispatch')
 	}
 
 	control() {
@@ -39,4 +39,4 @@ class DispatchController extends Controller {
 	}
 }
 
-module.exports = new DispatchController(3)
+module.exports = new DispatchController()

@@ -37,6 +37,8 @@ module.exports.loop = function () {
     }
   }
 
+  Controller.startOfLoop()
+  
   // Minimal check
   let missing = checkMinimal();
   if (missing) {
@@ -51,7 +53,6 @@ module.exports.loop = function () {
     grow.spawn()
   }
 
-  Controller.startOfLoop()
 
   Coll.control()
   Harv.control()

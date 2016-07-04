@@ -1,4 +1,5 @@
 const Controller = require('controller')
+const PRIOS = require('priority')
 
 module.exports = class BuilderController extends Controller {
 
@@ -12,9 +13,8 @@ module.exports = class BuilderController extends Controller {
       let room = Game.rooms[ roomName ]
       let sites = room.find(FIND_CONSTRUCTION_SITES)
 
-      if (sites) {
-        if (sites.length > this.creepNames.size
-          && this.maxcreeps > this.creepNames.size) {
+      if (sites && sites.length > 0) {
+        if ( this.maxcreeps > this.creepNames.size) {
           this.spawn(room.find(FIND_MY_SPAWNS)[ 0 ])
         }
       }
@@ -34,6 +34,9 @@ module.exports = class BuilderController extends Controller {
 
           if (creep.memory.building) {
             var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            targets.sort(
+              (t1,t2) => PRIOS.getPriority(t1.structureType)-PRIOS.getPriority(t2.structureType)
+            )
             if (targets.length) {
               if (creep.build(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[ 0 ]);

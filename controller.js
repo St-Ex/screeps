@@ -44,8 +44,10 @@ module.exports = class Controller {
   goGetEnergy(creep){
     var sources = creep.room.find(FIND_MY_STRUCTURES,{
       filter: (structure) => {
-        return (structure.structureType===STRUCTURE_CONTAINER || structure.structureType===STRUCTURE_STORAGE)
-          && structure.energy > structure.energyCapacity;
+        return (structure.structureType===STRUCTURE_CONTAINER
+          || structure.structureType===STRUCTURE_STORAGE
+          )
+          && structure.energy > 0;
       }
     });
     if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {

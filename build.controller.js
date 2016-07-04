@@ -13,8 +13,8 @@ class BuildController extends Controller {
 		this.doForEachCreep(
 			creep => {
 				creep.memory.build = (
-				creep.memory.build && creep.carry.energy !== 0
-				|| !creep.memory.build && creep.carry.energy === creep.carryCapacity
+					creep.memory.build && creep.carry.energy !== 0
+					|| !creep.memory.build && creep.carry.energy === creep.carryCapacity
 				)
 
 				if (!creep.memory.build) {
@@ -32,10 +32,12 @@ class BuildController extends Controller {
 
 					if (!target) {
 						let targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+						creep.memory.repair = false
 						if (!targets.length) {
 							targets = creep.room.find(
 								FIND_MY_STRUCTURES, {filter: structure => structure.hits < structure.hitsMax}
 							)
+							creep.memory.repair = true
 						}
 
 						targets.sort(
@@ -49,13 +51,13 @@ class BuildController extends Controller {
 
 					creep.memory.target = target.id
 					// Build or repare target
-					if (typeof target === 'ConstructionSite') {
-						if (creep.build(target) == ERR_NOT_IN_RANGE) {
+					if (creep.memory.repair) {
+						if (creep.repair(target) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0]);
 						}
 					}
 					else {
-						if (creep.repair(target) == ERR_NOT_IN_RANGE) {
+						if (creep.build(target) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0]);
 						}
 					}

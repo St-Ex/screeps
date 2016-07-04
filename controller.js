@@ -20,7 +20,7 @@ module.exports = class Controller {
 	 * @returns {*}
 	 */
 	get creepIds() {
-		this.creeps(this.role);
+		return this.creeps(this.role);
 	}
 
 	creeps(role) {

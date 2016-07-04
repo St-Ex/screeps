@@ -55,7 +55,7 @@ class BuildController extends Controller {
 						}
 					}
 					else {
-						if (creep.repare(target) == ERR_NOT_IN_RANGE) {
+						if (creep.repair(target) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0]);
 						}
 					}

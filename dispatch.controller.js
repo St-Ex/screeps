@@ -6,7 +6,7 @@ const limit = 0.60
 class DispatchController extends Controller {
 
 	constructor(max) {
-		super('dispatch', max, 0, false)
+		super('dispatch', max, 1, false)
 	}
 
 	control() {

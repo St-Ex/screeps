@@ -53,12 +53,12 @@ class BuildController extends Controller {
 					// Build or repare target
 					if (creep.memory.repair) {
 						if (creep.repair(target) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0]);
+							creep.moveTo(target);
 						}
 					}
 					else {
 						if (creep.build(target) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0]);
+							creep.moveTo(target);
 						}
 					}
 				}

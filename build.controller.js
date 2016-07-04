@@ -1,5 +1,5 @@
 const Controller = require('controller')
-const PRIOS = require('priority')
+const PRIOS = require('priority.manager')
 
 class BuilderController extends Controller {
 

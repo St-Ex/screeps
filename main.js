@@ -26,13 +26,20 @@ const growSequence = [
 ]
 
 function grow () {
+  let cont;
   for (let i=0;i<growSequence.length; i++){
     let g = growSequence[i]
     if (g.cont.creepIds.length < g.req){
-      g.cont.spawn()
+      cont = g.cont
       break
     }
   }
+  
+  if(cont){
+    console.log('[Grow] Next spawn '+cont.role)
+    cont.spawn()
+  }
+
 }
 
 module.exports.loop = function () {

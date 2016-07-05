@@ -56,7 +56,7 @@ module.exports = class Controller {
               structure.structureType === STRUCTURE_CONTAINER
               || structure.structureType === STRUCTURE_STORAGE
             )
-            && structure.energy > 0;
+            && structure[RESOURCE_ENERGY] > 0;
         }
       }
     );

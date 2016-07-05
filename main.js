@@ -16,7 +16,6 @@ function checkMinimal () {
 
 const growSequence = [
   { cont: Harv, req: 2 },
-  { cont: Bld, req: 1 },
   { cont: Coll, req: 3 },
   { cont: Bld, req: 2 },
   { cont: Harv, req: 3 },

@@ -15,7 +15,7 @@ class CollectController extends Controller {
     this.doForEachCreep(
       creep => {
         if (creep.carry.energy == 0) {
-          let targets = this.creeps('harvest')
+          let targets = Controller.creeps('harvest')
             .map(c => Game.getObjectById(c))
             .sort((c1, c2) => c2.carry[RESOURCE_ENERGY] - c1.carry[RESOURCE_ENERGY])
           if (targets.length) {

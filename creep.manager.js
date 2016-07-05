@@ -65,7 +65,7 @@ class CreepManager {
   }
 
   getCreepInNeed () {
-    return this.en_creeps.splice(0, 1)
+    return this.en_creeps.splice(0, 1).id
   }
 }
 

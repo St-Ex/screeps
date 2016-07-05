@@ -27,9 +27,12 @@ const growSequence = [
 ]
 
 function grow () {
-  let g = growSequence.find(g=> g.cont.creepIds.length < g.req)
-  if (g) {
-    g.cont.spawn()
+  for (let i=0;i<growSequence.length; i++){
+    let g = growSequence[i]
+    if (g.cont.creepIds.length < g.req){
+      g.cont.spawn()
+      break
+    }
   }
 }
 

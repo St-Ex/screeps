@@ -19,7 +19,7 @@ class CollectController extends Controller {
             .map(c => Game.getObjectById(c))
             .sort((c1, c2) => c2.carry[RESOURCE_ENERGY] - c1.carry[RESOURCE_ENERGY])
           if (targets.length) {
-            if (Controller.transferEnergy((targets[ 0 ],creep) == ERR_NOT_IN_RANGE) {
+            if (Controller.transferEnergy(targets[ 0 ],creep) == ERR_NOT_IN_RANGE) {
               creep.moveTo(targets[ 0 ]);
             }
           } else {

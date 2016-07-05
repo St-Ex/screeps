@@ -28,7 +28,7 @@ module.exports = class Controller {
   }
 
   control () {
-    
+
   }
 
   doForEachCreep (cb) {
@@ -61,7 +61,7 @@ module.exports = class Controller {
       }
     );
     if (sources.length) {
-      if (sources[ 0 ].transferEnergy(creep) == ERR_NOT_IN_RANGE) {
+      if (sources[ 0 ].transfer(creep,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[ 0 ]);
       }
     }

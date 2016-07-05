@@ -4,9 +4,7 @@ const TRIGGER_PICK = 25
 
 module.exports = class Controller {
 
-	constructor(role, max, min, needEnergy) {
-		this.maxcreeps = max
-		this.mincreeps = min
+	constructor(role, needEnergy) {
 		this.role = role
 		this.needEnergy = needEnergy
 	}
@@ -90,7 +88,7 @@ module.exports = class Controller {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param source
 	 * @param target
 	 * @returns {*}

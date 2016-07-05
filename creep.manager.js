@@ -18,9 +18,16 @@ class CreepManager {
     this.en_creeps = []
   }
 
-  reset (init) {
+  reset () {
 
-    this.creeps = Object.assign({}, init)
+    this.creeps = {
+	    'build':[],
+	    'harvest':[],
+	    'collect':[],
+	    'dispatch':[],
+	    'recycle':[],
+	    'upgrade':[]
+    }
     this.en_creeps = []
 
     for (let name in Game.creeps) {

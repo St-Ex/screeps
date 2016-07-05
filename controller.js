@@ -1,6 +1,5 @@
 const CreepManager = require('creep.manager')
 
-const CREEPS_RESET = {}
 const TRIGGER_PICK = 25
 
 module.exports = class Controller {
@@ -10,11 +9,10 @@ module.exports = class Controller {
     this.mincreeps = min
     this.role = role
     this.needEnergy = needEnergy
-    CREEPS_RESET[ this.role ] = [];
   }
 
   static startOfLoop () {
-    CreepManager.reset(CREEPS_RESET)
+    CreepManager.reset()
   }
 
   /**

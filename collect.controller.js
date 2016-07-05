@@ -17,9 +17,9 @@ class CollectController extends Controller {
         if (creep.carry.energy == 0) {
           let targets = Controller.creeps('harvest')
             .map(c => Game.getObjectById(c))
-            .sort((c1, c2) => c2.carry[RESOURCE_ENERGY] - c1.carry[RESOURCE_ENERGY])
+            .sort((c1, c2) => c2.carry[ RESOURCE_ENERGY ] / c2.carryCapacity - c1.carry[ RESOURCE_ENERGY ] / c1.carryCapacity)
           if (targets.length) {
-            if (Controller.transferEnergy(targets[ 0 ],creep) == ERR_NOT_IN_RANGE) {
+            if (Controller.transferEnergy(targets[ 0 ], creep) == ERR_NOT_IN_RANGE) {
               creep.moveTo(targets[ 0 ]);
             }
           } else {
@@ -49,12 +49,10 @@ class CollectController extends Controller {
             }
           )
           targets.sort(
-            (t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(
-              t1.structureType
-            )
+            (t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(t1.structureType)
           )
           if (targets.length) {
-            if (Controller.transferEnergy(creep,targets[0]) == ERR_NOT_IN_RANGE) {
+            if (Controller.transferEnergy(creep, targets[ 0 ]) == ERR_NOT_IN_RANGE) {
               creep.moveTo(targets[ 0 ]);
             }
           }

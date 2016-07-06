@@ -1,6 +1,8 @@
 const Controller = require('controller')
 const CreepManager = require('creep.manager')
 
+const TRIGGER_CAPA = 0.7
+
 class DispatchController extends Controller {
 
   constructor () {
@@ -12,7 +14,10 @@ class DispatchController extends Controller {
 
     this.doForEachCreep(
       creep => {
-        if (creep.carry.energy == 0) {
+        creep.memory.collect = creep.carry[RESOURCE_ENERGY] == 0
+          || (creep.memory.collect && creep.carry[RESOURCE_ENERGY]/creep.carryCapacity < TRIGGER_CAPA)
+
+        if (creep.memory.collect) {
           this.goGetEnergy(creep)
         }
         else {

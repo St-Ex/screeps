@@ -54,7 +54,7 @@ class CollectController extends Controller {
             }
           )
           if(!targets.length){
-            creep.room.find(
+            targets = creep.room.find(
               FIND_STRUCTURES, {
                 filter: (structure) => {
                   return (structure.structureType === STRUCTURE_STORAGE

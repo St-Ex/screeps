@@ -47,6 +47,7 @@ module.exports = class Controller {
   }
 
   goGetEnergy (creep) {
+    delete creep.memory.gge
     let sources = creep.room.find(
       FIND_MY_STRUCTURES, {
         filter: (structure) => {
@@ -59,6 +60,7 @@ module.exports = class Controller {
       }
     );
     if (sources.length) {
+      creep.memory.gge='struct'
       if (Controller.transferEnergy(sources[ 0 ], creep) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[ 0 ]);
       }
@@ -72,6 +74,7 @@ module.exports = class Controller {
         }
       )
       if (sources.length) {
+        creep.memory.gge='drop'
         if (creep.pickup(sources[ 0 ]) == ERR_NOT_IN_RANGE) {
           creep.moveTo(sources[ 0 ]);
         }
@@ -80,6 +83,7 @@ module.exports = class Controller {
         sources = Controller.creeps('harvest')
           .map(c => Game.getObjectById(c))
           .sort((c1, c2) => c2.carry - c1.carry)
+        creep.memory.gge='harv'
         if (Controller.transferEnergy(sources[ 0 ], creep) == ERR_NOT_IN_RANGE) {
           creep.moveTo(sources[ 0 ]);
         }

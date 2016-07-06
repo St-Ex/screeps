@@ -42,7 +42,7 @@ class CreepManager {
 
         if (creep.memory.en) {
           let p = creep.carry[RESOURCE_ENERGY] / creep.carryCapacity
-          this.en_creeps.push[ { id: creep.id, p: p } ];
+          this.en_creeps.push({ id: creep.id, p: p });
         }
       }
     }

@@ -2,6 +2,7 @@ const Controller = require('controller')
 const PRIOS = require('priority.manager')
 
 const TRIGGER_PICK = 50
+const TRIGGER_ABS_HARV=10
 const TRIGGER_CAPA = 0.7
 class CollectController extends Controller {
 
@@ -21,6 +22,7 @@ class CollectController extends Controller {
         if (creep.memory.collect) {
           let targets = Controller.creeps('harvest')
             .map(c => Game.getObjectById(c))
+            .filter(c =>  c2.carry[ RESOURCE_ENERGY ] >= TRIGGER_ABS_HARV)
             .sort((c1, c2) => c2.carry[ RESOURCE_ENERGY ] / c2.carryCapacity - c1.carry[ RESOURCE_ENERGY ] / c1.carryCapacity)
           if (targets.length) {
             if (Controller.transferEnergy(targets[ 0 ], creep) == ERR_NOT_IN_RANGE) {

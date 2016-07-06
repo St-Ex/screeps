@@ -35,7 +35,7 @@ class BuildController extends Controller {
             creep.memory.repair = false
             if (!targets.length) {
               targets = creep.room.find(
-                FIND_STRUCTURES, { filter: structure => structure.hits < structure.hitsMax }
+                FIND_MY_STRUCTURES, { filter: structure => structure.hits < structure.hitsMax }
               )
               creep.memory.repair = true
             }

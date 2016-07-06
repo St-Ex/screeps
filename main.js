@@ -22,7 +22,7 @@ const growSequence = [
   { cont: Coll, req: 4 },
   { cont: Disp, req: 2 },
   { cont: Bld, req: 3 },
-  { cont: Up, req: 2 },
+  { cont: Up, req: 4 },
 ]
 
 function grow () {
@@ -34,7 +34,7 @@ function grow () {
       break
     }
   }
-  
+
   if(cont){
     console.log('[Grow] Next spawn '+cont.role)
     cont.spawn()

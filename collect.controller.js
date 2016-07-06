@@ -32,7 +32,7 @@ class CollectController extends Controller {
             let targets = creep.room.find(FIND_DROPPED_ENERGY, {
               filter: (d=>d.amount >= TRIGGER_PICK)
             })
-            if (targets) {
+            if (targets.length) {
               if (creep.pickup(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[ 0 ]);
               }

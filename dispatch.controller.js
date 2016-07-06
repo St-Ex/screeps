@@ -14,10 +14,10 @@ class DispatchController extends Controller {
 
     this.doForEachCreep(
       creep => {
-        creep.memory.collect = creep.carry[RESOURCE_ENERGY] == 0
-          || (creep.memory.collect && creep.carry[RESOURCE_ENERGY]/creep.carryCapacity < TRIGGER_CAPA)
+        creep.memory.dispatch = creep.carry[RESOURCE_ENERGY] !== 0
+          && (!creep.memory.dispatch && creep.carry[RESOURCE_ENERGY]/creep.carryCapacity > TRIGGER_CAPA)
 
-        if (creep.memory.collect) {
+        if (!creep.memory.dispatch) {
           this.goGetEnergy(creep)
         }
         else {

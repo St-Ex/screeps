@@ -49,7 +49,7 @@ module.exports = class Controller {
 	goGetEnergy(creep) {
 		delete creep.memory.gge
 		let sources = creep.room.find(
-			FIND_MY_STRUCTURES, {
+			FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
 							structure.structureType === STRUCTURE_CONTAINER

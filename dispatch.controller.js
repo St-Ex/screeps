@@ -21,6 +21,14 @@ class DispatchController extends Controller {
           this.goGetEnergy(creep)
         }
         else {
+          if(creep.memory.target){
+            let target = Game.getObjectById(creep.memory.target)
+
+            if (target && target.carry[RESOURCE_ENERGY] === target.carryCapacity) {
+              creep.memory.target = false;
+            }
+          }
+
           if (!creep.memory.target) {
             creep.memory.target = CreepManager.getCreepInNeed()
           }

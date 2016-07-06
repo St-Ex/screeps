@@ -47,7 +47,7 @@ class CreepManager {
       }
     }
 
-    this.en_creeps.sort((c1, c2)=>c2.p - c1.p)
+    this.en_creeps.sort((c1, c2)=>c1.p - c2.p)
   }
 
   spawn (spawner, parts, memory) {
@@ -72,7 +72,7 @@ class CreepManager {
   }
 
   getCreepInNeed () {
-    return this.en_creeps.splice(0, 1).id
+    return this.en_creeps.splice(0, 1)[0].id
   }
 }
 

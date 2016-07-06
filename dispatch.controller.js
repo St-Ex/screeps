@@ -36,13 +36,16 @@ class DispatchController extends Controller {
           let target = Game.getObjectById(creep.memory.target)
 
           if (target) {
-            switch (creep.transfer(target, RESOURCE_ENERGY)) {
+            let r=creep.transfer(target, RESOURCE_ENERGY)
+            switch (r) {
               case  ERR_NOT_IN_RANGE :
                 creep.moveTo(target)
                 break
               case 0 :
-              default:
                 delete creep.memory.target
+                break;
+              default:
+                console.log('Dispatch Error',creep.name,r)
             }
           }
         }

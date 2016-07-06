@@ -44,18 +44,26 @@ class CollectController extends Controller {
         else {
           // Let's give some energy
           let targets = creep.room.find(
-            FIND_STRUCTURES, {
+            FIND_MY_STRUCTURES, {
               filter: (structure) => {
                 return (
                     structure.structureType == STRUCTURE_EXTENSION
                     || structure.structureType == STRUCTURE_SPAWN
-                    || structure.structureType === STRUCTURE_STORAGE
-                    || structure.structureType === STRUCTURE_CONTAINER
-                  ) &&
-                  structure.energy < structure.energyCapacity;
+                  ) && structure.energy < structure.energyCapacity;
               }
             }
           )
+          if(!targets.length){
+            creep.room.find(
+              FIND_MY_STRUCTURES, {
+                filter: (structure) => {
+                  return (structure.structureType === STRUCTURE_STORAGE
+                      || structure.structureType === STRUCTURE_CONTAINER
+                    ) && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
+                }
+              }
+            )
+          }
           targets.sort(
             (t1, t2) => PRIOS.getPriority(t2.structureType) - PRIOS.getPriority(t1.structureType)
           )

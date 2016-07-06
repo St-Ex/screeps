@@ -36,6 +36,8 @@ class CollectController extends Controller {
               if (creep.pickup(targets[ 0 ]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(targets[ 0 ]);
               }
+            }else{
+              creep.memory.collect=false
             }
           }
         }

@@ -25,7 +25,7 @@ class BuildController extends Controller {
           if (creep.memory.target) {
             target = Game.getObjectById(creep.memory.target)
 
-            if (target && target.hits === target.hitsMax) {
+            if (!target || target.hits === target.hitsMax) {
               target = false;
             }
           }

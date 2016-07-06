@@ -24,7 +24,7 @@ class DispatchController extends Controller {
           if(creep.memory.target){
             let target = Game.getObjectById(creep.memory.target)
 
-            if (target && target.carry[RESOURCE_ENERGY] === target.carryCapacity) {
+            if (!target || target.carry[RESOURCE_ENERGY] === target.carryCapacity) {
               creep.memory.target = false;
             }
           }

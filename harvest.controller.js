@@ -19,7 +19,7 @@ class HarvestController extends Controller {
 
     if (creep.carry.energy !== creep.carryCapacity) {
       let target = Game.getObjectById(creep.memory.target)
-      switch (creep.harvest()){
+      switch (creep.harvest(target)){
         case 0 :
         case ERR_NOT_ENOUGH_RESOURCES:
           break;

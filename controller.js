@@ -72,7 +72,7 @@ module.exports = class Controller {
 				if (creep.carry[RESOURCE_ENERGY]===creep.carryCapacity) delete creep.memory.gge_source
 				break;
 			case ERR_NOT_IN_RANGE:
-				creep.moveTo(creep.room.storage)
+				creep.moveTo(source)
 				break
 			default :
 				console.log('GGE',creep.name,'Cannot gge',r)

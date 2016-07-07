@@ -33,7 +33,7 @@ class HarvestController extends Controller {
   }
 
   newCreep () {
-    return [ MOVE, WORK, CARRY, WORK, CARRY, CARRY, CARRY, CARRY ]
+    return [ MOVE, WORK, CARRY, WORK, WORK, CARRY, CARRY ]
   }
 }
 

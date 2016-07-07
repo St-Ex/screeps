@@ -1,5 +1,6 @@
 const Controller = require('controller')
 const PRIOS = require('priority.manager')
+const SRC = require('source.manager')
 
 const TRIGGER_PICK = 50
 const TRIGGER_ABS_HARV = 10
@@ -19,13 +20,24 @@ class CollectController extends Controller {
 				creep.memory.collect = creep.carry[RESOURCE_ENERGY] == 0 || (creep.memory.collect && creep.carry[RESOURCE_ENERGY]/creep.carryCapacity < TRIGGER_CAPA)
 
 				if (creep.memory.collect) {
-					let targets = Controller.creeps('harvest')
-						.map(c => Game.getObjectById(c))
+
+					if (!creep.memory.source){
+						SRC.affectCollect(creep)
+					}
+
+					let sources
+					if (creep.memory.source){
+						sources = SRC.getSources(creep)[creep.memory.source].harvest
+					}else{
+						sources = Controller.creeps('harvest')
+					}
+
+					sources = sources.map(c => Game.getObjectById(c))
 						.filter(c => c.carry[RESOURCE_ENERGY] >= TRIGGER_ABS_HARV)
 						.sort((c1, c2) => c2.carry[RESOURCE_ENERGY] / c2.carryCapacity - c1.carry[RESOURCE_ENERGY]/c1.carryCapacity)
-					if (targets.length) {
-						if (Controller.transferEnergy(targets[0], creep) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0]);
+					if (sources.length) {
+						if (Controller.transferEnergy(sources[0], creep) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(sources[0]);
 						}
 					}
 					else {

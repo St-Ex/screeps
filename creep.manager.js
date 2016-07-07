@@ -35,12 +35,11 @@ class CreepManager {
       let creep = Game.creeps[ name ]
       if (creep) {
       if (creep.spawning) continue
-        if (creep.memory.role === 'harvest') {
-            SRC.addCreep(creep)
-        } else if (!creep.memory.role) {
+        if (!creep.memory.role) {
           // Recycle
           creep.memory.role = 'recycle';
         }
+        SRC.addCreep(creep)
         this.creeps[ creep.memory.role ].push(creep.id)
 
         if (creep.memory.en) {

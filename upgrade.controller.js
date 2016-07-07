@@ -31,7 +31,7 @@ class UpgradeController extends Controller {
   }
 
   newCreep () {
-    return [ WORK, CARRY, MOVE, CARRY, WORK, WORK, CARY, CARRY ]
+    return [ WORK, CARRY, MOVE, CARRY, WORK, WORK, CARRY, CARRY ]
   }
 }
 

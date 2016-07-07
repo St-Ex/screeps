@@ -14,7 +14,7 @@ class HarvestController extends Controller {
 
   harvestOrMove (creep) {
     if (!creep.memory.target) {
-      findAvailableSource(creep)
+      SRC.findAvailableSource(creep)
     }
 
     if (creep.carry.energy !== creep.carryCapacity) {

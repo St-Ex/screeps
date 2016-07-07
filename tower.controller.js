@@ -28,7 +28,7 @@ class TowerController {
 						if (target){
 							tower.attack(target)
 						}else{
-							let repairs = creep.room.find(FIND_STRUCTURES, {filter: s => s.hits < s.hitsMax})
+							let repairs = room.find(FIND_STRUCTURES, {filter: s => s.hits < s.hitsMax})
 							tower.repair(repairs[0])
 						}
 					}

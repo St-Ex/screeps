@@ -49,46 +49,30 @@ module.exports = class Controller {
 
 	goGetEnergy(creep) {
 		delete creep.memory.gge
-		let sources = creep.room.find(
-			FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (
-							structure.structureType === STRUCTURE_CONTAINER
-							|| structure.structureType === STRUCTURE_STORAGE
-						)
-						&& structure.store[RESOURCE_ENERGY] > 0;
-				}
-			}
-		);
-		if (sources.length) {
+
+		if (creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY]) {
 			creep.memory.gge = 'struct'
-			if (Controller.transferEnergy(sources[0], creep) == ERR_NOT_IN_RANGE) {
+			if (Controller.transferEnergy(creep.room.storage, creep) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(creep.room.storage);
+			}
+			return
+		}
+
+		let sources = creep.room.find(FIND_DROPPED_ENERGY, {filter: (d=>d.amount >= TRIGGER_PICK)})
+		if (sources.length) {
+			creep.memory.gge = 'drop'
+			if (creep.pickup(sources[0]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[0]);
 			}
+			return
 		}
-		else {
-			sources = creep.room.find(
-				FIND_DROPPED_ENERGY, {
-					filter: (
-						        d=>d.amount >= TRIGGER_PICK
-					        )
-				}
-			)
-			if (sources.length) {
-				creep.memory.gge = 'drop'
-				if (creep.pickup(sources[0]) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[0]);
-				}
-			}
-			else {
-				sources = Controller.creeps('harvest')
-					.map(c => Game.getObjectById(c))
-					.sort((c1, c2) => c2.carry - c1.carry)
-				creep.memory.gge = 'harv'
-				if (Controller.transferEnergy(sources[0], creep) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[0]);
-				}
-			}
+
+		sources = Controller.creeps('harvest')
+			.map(c => Game.getObjectById(c))
+			.sort((c1, c2) => c2.carry - c1.carry)
+		creep.memory.gge = 'harv'
+		if (Controller.transferEnergy(sources[0], creep) == ERR_NOT_IN_RANGE) {
+			creep.moveTo(sources[0]);
 		}
 	}
 

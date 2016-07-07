@@ -21,12 +21,12 @@ class CreepManager {
   reset () {
 
     this.creeps = {
-	    'build':[],
-	    'harvest':[],
-	    'collect':[],
-	    'dispatch':[],
-	    'recycle':[],
-	    'upgrade':[]
+      'build': [],
+      'harvest': [],
+      'collect': [],
+      'dispatch': [],
+      'recycle': [],
+      'upgrade': []
     }
     this.en_creeps = []
 
@@ -34,14 +34,16 @@ class CreepManager {
       let creep = Game.creeps[ name ]
 
       if (creep) {
-        if (!creep.memory.role) {
+        if (creep.memory.role === 'harvest') {
+          
+        } else if (!creep.memory.role) {
           // Recycle
           creep.memory.role = 'recycle';
         }
         this.creeps[ creep.memory.role ].push(creep.id)
 
         if (creep.memory.en) {
-          let p = creep.carry[RESOURCE_ENERGY] / creep.carryCapacity
+          let p = creep.carry[ RESOURCE_ENERGY ] / creep.carryCapacity
           this.en_creeps.push({ id: creep.id, p: p });
         }
       }
@@ -72,7 +74,7 @@ class CreepManager {
   }
 
   getCreepInNeed () {
-    return this.en_creeps.splice(0, 1)[0].id
+    return this.en_creeps.splice(0, 1)[ 0 ].id
   }
 }
 

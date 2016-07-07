@@ -1,4 +1,5 @@
 const Controller = require('controller')
+const SRC = require('source.manager')
 
 class HarvestController extends Controller {
 
@@ -13,18 +14,20 @@ class HarvestController extends Controller {
 
   harvestOrMove (creep) {
     if (!creep.memory.target) {
-      let sources = creep.room.find(FIND_SOURCES);
-      let result = creep.harvest(sources[ 0 ])
-      if (result === 0) {
-        creep.memory.target = sources[ 0 ].id
-      }
-      else if (creep.harvest(sources[ 0 ]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[ 0 ]);
-      }
+      findAvailableSource(creep)
     }
-    else {
-      if (creep.carry.energy !== creep.carryCapacity) {
-        creep.harvest(Game.getObjectById(creep.memory.target))
+
+    if (creep.carry.energy !== creep.carryCapacity) {
+      let target = Game.getObjectById(creep.memory.target)
+      switch (creep.harvest()){
+        case 0 :
+        case ERR_NOT_ENOUGH_RESOURCES:
+          break;
+        case ERR_NOT_IN_RANGE:
+          creep.moveTo(target)
+          break
+        default:
+          delete creep.memory.target
       }
     }
   }

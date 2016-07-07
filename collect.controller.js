@@ -50,7 +50,10 @@ class CollectController extends Controller {
 								creep.moveTo(target)
 								break;
 							case 0 :
+								delete creep.memory.target
+								break;
 							default :
+								console.log('Collect',creep.name,'Fail give energy',r)
 								delete creep.memory.target
 						}
 					}

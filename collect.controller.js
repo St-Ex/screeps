@@ -39,30 +39,31 @@ class CollectController extends Controller {
 							creep.memory.collect = false
 						}
 					}
-				}
-
-				if (creep.memory.target) {
-					let target = Game.getObjectById(creep.memory.target);
-					if(target && Controller.roomForEnergy(target)){
-						let r = Controller.transferEnergy(creep, target);
-						switch (r) {
-							case ERR_NOT_IN_RANGE :
-								creep.moveTo(target)
-								break;
-							case 0 :
-								delete creep.memory.target
-								break;
-							default :
-								console.log('Collect',creep.name,'Fail give energy',r)
-								delete creep.memory.target
+				}else{
+					if (creep.memory.target) {
+						let target = Game.getObjectById(creep.memory.target);
+						if(target && Controller.roomForEnergy(target)){
+							let r = Controller.transferEnergy(creep, target);
+							switch (r) {
+								case ERR_NOT_IN_RANGE :
+									creep.moveTo(target)
+									break;
+								case 0 :
+									delete creep.memory.target
+									break;
+								default :
+									console.log('Collect',creep.name,'Fail give energy',r)
+									delete creep.memory.target
+							}
+						}else{
+							delete creep.memory.target
 						}
-					}else{
-						delete creep.memory.target
+					}else {
+						this.findTargetStructure(creep)
 					}
-				}else {
-					this.findTargetStructure(creep)
 				}
 			}
+
 		)
 	}
 

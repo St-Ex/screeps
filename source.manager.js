@@ -11,7 +11,7 @@ class SourceManager {
     this.sources = SOURCES;
   }
 
-  addCreep (source) {
+  addCreep (creep) {
     if (this.sources[ creep.room.id ]
       && this.sources[ creep.room.id ][ creep.memory.target ]) {
       this.sources[ creep.room.id ][ creep.memory.target ].creeps++
@@ -27,7 +27,7 @@ class SourceManager {
         let s = SOURCES[ creep.room.id ][ sourceId ]
         if (s.creeps < s.max) {
           creep.memory.target = sourceId
-          this.addCreep(sourceId)
+          this.addCreep(creep)
           break
         }
       }

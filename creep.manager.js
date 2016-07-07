@@ -1,3 +1,4 @@
+const SRC = require('source.manager')
 const trigger_energy = 0.60
 
 const PART_COST = {
@@ -35,7 +36,7 @@ class CreepManager {
 
       if (creep) {
         if (creep.memory.role === 'harvest') {
-          
+            SRC.addCreep(creep)
         } else if (!creep.memory.role) {
           // Recycle
           creep.memory.role = 'recycle';

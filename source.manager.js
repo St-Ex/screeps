@@ -48,13 +48,13 @@ class SourceManager {
 	}
 
 	affectCollect(creep){
-		if (!this.sources[creep.room.name]) {
+		if (this.sources[creep.room.name]) {
 			let min=-1
 			let source
 			for (let sourceId in this.sources[creep.room.name]) {
 				let s = this.sources[creep.room.name][sourceId]
 				if (s.harvest.length>0) {
-					if (min === -1 || min>s.collect){
+					if (min === -1 || min > s.collect){
 						min = s.collect
 						source = sourceId
 					}
@@ -64,7 +64,7 @@ class SourceManager {
 			console.log('AffectCollect', creep.name, creep.memory.source)
 		}
 	}
-	
+
 	getSources(creep){
 		return this.sources[creep.room.name]
 	}

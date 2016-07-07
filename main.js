@@ -5,6 +5,7 @@ const Up = require('upgrade.controller')
 const R = require('recycle.controller')
 const Disp = require('dispatch.controller')
 const Bld = require('build.controller')
+const Twr = require('tower.controller')
 const CreepManager = require('creep.manager')
 
 function checkMinimal () {
@@ -71,5 +72,6 @@ module.exports.loop = function () {
   Up.control()
   Bld.control()
   R.control()
+  Twr.control()
 }
 

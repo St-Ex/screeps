@@ -3,7 +3,7 @@ class SourceManager {
   reset () {
     this.sources = {
       E32S39: {
-        '576a9c8e57110ab231d8947b': { max: 2, crreps: 0 },
+        '576a9c8e57110ab231d8947b': { max: 2, creeps: 0 },
         '576a9c8e57110ab231d8947c': { max: 2, creeps: 0 }
       }
   }

@@ -21,16 +21,18 @@ class SourceManager {
   findAvailableSource (creep) {
     if (!this.sources[ creep.room.id ]) {
       let sources = creep.room.find(FIND_SOURCES)
-      return creep.memory.target = sources[ 0 ].id
+      creep.memory.target = sources[ 0 ].id
     } else {
       for (sourceId in SOURCES[ creep.room.id ]) {
         let s = SOURCES[ creep.room.id ][ sourceId ]
         if (s.creeps < s.max) {
           creep.memory.target = sourceId
           this.addCreep(sourceId)
+          break
         }
       }
     }
+    console.log('Affect',creep.name,creep.memory.target)
   }
 
   getMax (roomId, sourceId) {

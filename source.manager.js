@@ -10,19 +10,19 @@ class SourceManager {
   }
 
   addCreep (creep) {
-    if (this.sources[ creep.room.id ]
-      && this.sources[ creep.room.id ][ creep.memory.target ]) {
-      this.sources[ creep.room.id ][ creep.memory.target ].creeps++
+    if (this.sources[ creep.room.name ]
+      && this.sources[ creep.room.name ][ creep.memory.target ]) {
+      this.sources[ creep.room.name ][ creep.memory.target ].creeps++
     }
   }
 
   findAvailableSource (creep) {
-    if (!this.sources[ creep.room.id ]) {
+    if (!this.sources[ creep.room.name ]) {
       let sources = creep.room.find(FIND_SOURCES)
       creep.memory.target = sources[ 0 ].id
     } else {
-      for (sourceId in SOURCES[ creep.room.id ]) {
-        let s = SOURCES[ creep.room.id ][ sourceId ]
+      for (sourceId in SOURCES[ creep.room.name ]) {
+        let s = SOURCES[ creep.room.name ][ sourceId ]
         if (s.creeps < s.max) {
           creep.memory.target = sourceId
           this.addCreep(creep)

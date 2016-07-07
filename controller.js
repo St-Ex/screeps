@@ -1,5 +1,5 @@
 const CreepManager = require('creep.manager')
-
+const SRC = require('source.manager')
 const TRIGGER_PICK = 25
 
 module.exports = class Controller {
@@ -11,6 +11,7 @@ module.exports = class Controller {
 
 	static startOfLoop() {
 		CreepManager.reset()
+    SRC.reset()
 	}
 
 	/**

@@ -56,6 +56,8 @@ class CollectController extends Controller {
 								console.log('Collect',creep.name,'Fail give energy',r)
 								delete creep.memory.target
 						}
+					}else{
+						delete creep.memory.target
 					}
 				}else {
 					this.findTargetStructure(creep)

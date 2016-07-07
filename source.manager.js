@@ -29,8 +29,8 @@ class SourceManager {
 			creep.memory.target = sources[0].id
 		}
 		else {
-			for (sourceId in this.sources[creep.room.name]) {
-				let s = SOURCES[creep.room.name][sourceId]
+			for (let sourceId in this.sources[creep.room.name]) {
+				let s = this.sources[creep.room.name][sourceId]
 				if (s.creeps < s.max) {
 					creep.memory.target = sourceId
 					this.addCreep(creep)
@@ -39,12 +39,6 @@ class SourceManager {
 			}
 		}
 		console.log('Affect', creep.name, creep.memory.target)
-	}
-
-	getMax(roomId, sourceId) {
-		if (!SOURCES[roomId]) return 0
-		if (!SOURCES[roomId][sourceId]) return 0
-		return SOURCES[roomId][sourceId].max
 	}
 }
 

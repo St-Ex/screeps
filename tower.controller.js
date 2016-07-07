@@ -1,7 +1,8 @@
 class TowerController {
 
 	control(){
-		for (let room of Game.rooms){
+		for (let roomName in Game.rooms){
+			room=Game.rooms[roomName]
 			let towers= room.find(FIND_MY_STRUCTURES, {
 				filter: { structureType: STRUCTURE_TOWER }
 			})

@@ -10,8 +10,8 @@ module.exports = class Controller {
 	}
 
 	static startOfLoop() {
-		CreepManager.reset()
     SRC.reset()
+		CreepManager.reset()
 	}
 
 	/**

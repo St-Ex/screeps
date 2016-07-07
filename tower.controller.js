@@ -29,7 +29,7 @@ class TowerController {
 							tower.attack(target)
 						}else{
 							let repairs = room.find(FIND_STRUCTURES, {filter: s => s.hits < s.hitsMax})
-							repairs.sort((s1,s2)=>s2.hits-s1.hits)
+							repairs.sort((s1,s2)=>s1.hits-s2.hits)
 							tower.repair(repairs[0])
 						}
 					}

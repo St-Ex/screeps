@@ -69,7 +69,7 @@ module.exports = class Controller {
 		let r=Controller.transferEnergy(source, creep)
 		switch (r){
 			case 0 :
-				if (creep.carry[RESOURCE_ENERGY]===creep.carryCapacity) delete creep.memory.gge_source
+				delete creep.memory.gge_source
 				break;
 			case ERR_NOT_IN_RANGE:
 				creep.moveTo(source)

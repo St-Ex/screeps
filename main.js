@@ -21,7 +21,7 @@ const growSequence = [
   { cont: Harv, req: 3 },
   { cont: Coll, req: 5 },
   { cont: Harv, req: 4 },
-  { cont: Disp, req: 2 },
+  { cont: Disp, req: 4 },
   { cont: Bld, req: 3 },
   { cont: Up, req: 4 },
 ]

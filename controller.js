@@ -104,20 +104,21 @@ module.exports = class Controller {
 				? source.carry[RESOURCE_ENERGY]
 				: source.store[RESOURCE_ENERGY]
 		)
-		let maxTarget = (
-			target.carryCapacity
-				? target.carryCapacity - target.carry[RESOURCE_ENERGY]
-				: (
-				target.storeCapacity
-					? target.storeCapacity - target.store[RESOURCE_ENERGY]
-					: target.energyCapacity - target.energy
-			)
-		)
 
 		return source.transfer(
 			target,
 			RESOURCE_ENERGY,
-			Math.min(maxSource, maxTarget)
+			Math.min(maxSource, Controller.roomForEnergy(target))
+		)
+	}
+
+	static roomForEnergy(target){
+		return target.carryCapacity
+			? target.carryCapacity - target.carry[RESOURCE_ENERGY]
+			: (
+			target.storeCapacity
+				? target.storeCapacity - target.store[RESOURCE_ENERGY]
+				: target.energyCapacity - target.energy
 		)
 	}
 }

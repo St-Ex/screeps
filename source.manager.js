@@ -29,7 +29,7 @@ class SourceManager {
 			creep.memory.target = sources[0].id
 		}
 		else {
-			for (sourceId of this.sources[creep.room.name]) {
+			for (sourceId in this.sources[creep.room.name]) {
 				let s = SOURCES[creep.room.name][sourceId]
 				if (s.creeps < s.max) {
 					creep.memory.target = sourceId

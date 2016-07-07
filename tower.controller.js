@@ -10,17 +10,18 @@ class TowerController {
 			if(towers.length){
 				towers.forEach(
 					tower =>{
+
 						let target
-						if (tower.memory.target) {
-							target = Game.getObjectById(tower.memory.target)
+						if (room.memory.target) {
+							target = Game.getObjectById(room.memory.target)
 						}
 
 						if (!target){
-							delete tower.memory.target
+							delete room.memory.target
 							let targets =room.find(FIND_HOSTILE_CREEPS)
 							if (targets.length){
 								target = targets[0]
-								tower.memory.target = target.id
+								room.memory.target = target.id
 							}
 						}
 

@@ -40,4 +40,4 @@ class SourceManager {
   }
 }
 
-module.export = new SourceManager()
+module.exports = new SourceManager()

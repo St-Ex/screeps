@@ -33,8 +33,8 @@ class CreepManager {
 
     for (let name in Game.creeps) {
       let creep = Game.creeps[ name ]
-
       if (creep) {
+      if (creep.spawning) continue
         if (creep.memory.role === 'harvest') {
             SRC.addCreep(creep)
         } else if (!creep.memory.role) {

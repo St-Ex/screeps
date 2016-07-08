@@ -20,7 +20,7 @@ const growSequence = [
   { cont: Coll, req: 3 },
   { cont: Bld, req: 2 },
   { cont: Harv, req: 3 },
-  { cont: Coll, req: 5 },
+  { cont: Coll, req: 6 },
   { cont: Harv, req: 4 },
   { cont: Disp, req: 4 },
   { cont: Bld, req: 3 },

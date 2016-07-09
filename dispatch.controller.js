@@ -19,7 +19,7 @@ class DispatchController extends Controller {
           creep.memory.dispatch = false;
         }
         if (!creep.memory.dispatch && creep.carry[ RESOURCE_ENERGY ] / creep.carryCapacity > TRIGGER_CAPA) {
-          creep.memory.upgrading = true;
+          creep.memory.dispatch = true;
         }
 
         if (!creep.memory.dispatch) {

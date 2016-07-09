@@ -51,6 +51,7 @@ class DispatchController extends Controller {
                 delete creep.memory.target
                 break;
               default:
+                delete creep.memory.target
                 console.log('Dispatch Error', creep.name, r)
             }
           }

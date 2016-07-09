@@ -18,7 +18,7 @@ class DispatchController extends Controller {
         if (creep.memory.dispatch && creep.carry.energy == 0) {
           creep.memory.dispatch = false;
         }
-        if (!creep.memory.dispatch && creep.carry[RESOURCE_ENERGY]/creep.carryCapacity > TRIGGER_CAPA) {
+        if (!creep.memory.dispatch && creep.carry[ RESOURCE_ENERGY ] / creep.carryCapacity > TRIGGER_CAPA) {
           creep.memory.upgrading = true;
         }
 
@@ -26,22 +26,23 @@ class DispatchController extends Controller {
           this.goGetEnergy(creep)
         }
         else {
-          if(creep.memory.target){
-            let target = Game.getObjectById(creep.memory.target)
+          let target
+          if (creep.memory.target) {
+            target = Game.getObjectById(creep.memory.target)
 
-            if (!target || target.carry[RESOURCE_ENERGY] === target.carryCapacity) {
-              creep.memory.target = false;
+            if (!target || target.carry[ RESOURCE_ENERGY ] === target.carryCapacity) {
+              delete creep.memory.target
             }
           }
 
-          if (!creep.memory.target) {
-            creep.memory.target = CreepManager.getCreepInNeed()
+          if (!target) {
+            target = Game.getObjectById(CreepManager.getCreepInNeed())
+            console.log('AffectDispatch', creep.name, target)
           }
 
-          let target = Game.getObjectById(creep.memory.target)
-
           if (target) {
-            let r=creep.transfer(target, RESOURCE_ENERGY)
+            creep.memory.target = target.id
+            let r = creep.transfer(target, RESOURCE_ENERGY)
             switch (r) {
               case  ERR_NOT_IN_RANGE :
                 creep.moveTo(target)
@@ -50,7 +51,7 @@ class DispatchController extends Controller {
                 delete creep.memory.target
                 break;
               default:
-                console.log('Dispatch Error',creep.name,r)
+                console.log('Dispatch Error', creep.name, r)
             }
           }
         }

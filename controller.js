@@ -54,7 +54,7 @@ module.exports = class Controller {
 		}
 
 		if(!source) {
-			if (creep.room.storage) {
+			if (creep.room.storage && creep.room.storage !== 0) {
 				source = creep.room.storage
 			}
 			else {
@@ -75,7 +75,7 @@ module.exports = class Controller {
 				creep.moveTo(source)
 				break
 			default :
-				console.log('GGE',creep.name,'Cannot gge',r)
+				console.log('GGE',creep.name,'Cannot gge',r, source)
 				delete creep.memory.gge_source
 		}
 	}

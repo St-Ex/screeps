@@ -54,7 +54,7 @@ module.exports = class Controller {
 		}
 
 		if(!source) {
-			if (creep.room.storage && creep.room.store[RESOURCE_ENERGY] !== 0) {
+			if (creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY] !== 0) {
 				source = creep.room.storage
 			}
 			else {

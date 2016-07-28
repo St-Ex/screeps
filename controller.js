@@ -73,6 +73,7 @@ module.exports = class Controller {
 			case 0 :
 				delete creep.memory.gge_source
 				break;
+			case -1 :
 			case ERR_NOT_IN_RANGE:
 				creep.moveTo(source)
 				break
@@ -95,6 +96,8 @@ module.exports = class Controller {
 				? source.carry[RESOURCE_ENERGY]
 				: source.store[RESOURCE_ENERGY]
 		)
+
+		if (maxSource==0) return -1
 
 		return source.transfer(
 			target,

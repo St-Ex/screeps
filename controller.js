@@ -63,6 +63,8 @@ module.exports = class Controller {
 					.sort((c1, c2) => c2.carry - c1.carry)
 				source = sources[0]
 			}
+			
+			creep.say('Going for energy from'+source)
 		}
 
 		creep.memory.gge_source=source.id
@@ -75,7 +77,7 @@ module.exports = class Controller {
 				creep.moveTo(source)
 				break
 			default :
-				console.log('GGE',creep.name,'Cannot gge',r, source)
+				creep.say('Cannot get energy from'+source+':'+r)
 				delete creep.memory.gge_source
 		}
 	}

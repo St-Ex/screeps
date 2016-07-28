@@ -56,15 +56,15 @@ module.exports = class Controller {
 		if(!source) {
 			if (creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY] !== 0) {
 				source = creep.room.storage
+				creep.say('src storage')
 			}
 			else {
 				let sources = Controller.creeps('harvest')
 					.map(c => Game.getObjectById(c))
 					.sort((c1, c2) => c2.carry - c1.carry)
 				source = sources[0]
+				creep.say('src '+source.name)
 			}
-			
-			creep.say('Going for energy from'+source)
 		}
 
 		creep.memory.gge_source=source.id
@@ -77,7 +77,8 @@ module.exports = class Controller {
 				creep.moveTo(source)
 				break
 			default :
-				creep.say('Cannot get energy from'+source+':'+r)
+				creep.say('!gge:'+r)
+				console.log('GGE',creep.name,'Cannot gge',r, source)
 				delete creep.memory.gge_source
 		}
 	}

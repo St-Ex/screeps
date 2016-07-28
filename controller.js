@@ -54,14 +54,14 @@ module.exports = class Controller {
 		}
 
 		if(!source) {
-			if (creep.room.storage && creep.room.storage.store[RESOURCE_ENERGY] !== 0) {
+			if (creep.room.storage) {
 				source = creep.room.storage
 				creep.say('src storage')
 			}
 			else {
 				let sources = Controller.creeps('harvest')
 					.map(c => Game.getObjectById(c))
-					.sort((c1, c2) => c2.carry - c1.carry)
+					.sort((c1, c2) => c1.carry - c2.carry)
 				source = sources[0]
 				creep.say('src '+source.name)
 			}

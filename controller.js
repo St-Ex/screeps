@@ -74,6 +74,8 @@ module.exports = class Controller {
 				delete creep.memory.gge_source
 				break;
 			case -1 :
+				creep.moveTo(Game.flags.WaitPoint)
+				break
 			case ERR_NOT_IN_RANGE:
 				creep.moveTo(source)
 				break

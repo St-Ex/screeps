@@ -83,7 +83,7 @@ class CollectController extends Controller {
 		let targets = creep.room.find(
 			FIND_MY_STRUCTURES, {
 				filter: (s) => (
-					s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_TOWER
+					s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN
 				) && Controller.roomForEnergy(s)
 
 			}
